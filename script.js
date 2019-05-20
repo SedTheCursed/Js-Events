@@ -80,6 +80,18 @@ function toggleCard(e) {
 
 viewBtns.forEach(card => card.addEventListener("mouseover", toggleCard))
 
-/*
-La fonctionnalité sera la suivante : si un utilisateur passe sa souris sur le bouton "View" d'une card (n'importe laquelle), celle-ci va se réduire. Cela veut dire que le texte disparaît, l'image n'apparaîtra qu'à 20 % de sa taille d'origine et les boutons "Edit" / "View" restent visibles. Cette fonction sera réversible : s'il repasse sa souris, la card redevient normale !
-*/
+// ******* F 7 ********
+const arrowRight = document.querySelector("main section.jumbotron a:last-of-type")
+
+function switchCard() {
+  const Cards = document.querySelector(".album > .container > .row")
+  console.log(Cards.lastElementChild)
+  CardToMove = Cards.removeChild(Cards.lastElementChild)
+  Cards.prepend(CardToMove)
+}
+
+arrowRight.addEventListener("click", switchCard)
+
+/*Allez on va rajouter un peu de WTF dans la page : si un utilisateur clique sur le bouton gris ==>, la dernière card (en bas à droite) va passer en premier (en haut à gauche). On va pouvoir faire tourner les cards !*/
+
+/*Petite remarque : tu vas réaliser que si tu mélanges les cards, il est fort probable que la fonctionnalité 6 va se mettre à faire n'importe quoi. Si tu survoles un bouton "View", c'est une autre card qui va se réduire. Si tu arrives à corriger ça, c'est cool mais la consigne est d'ignorer ce souci pour le moment.*/
