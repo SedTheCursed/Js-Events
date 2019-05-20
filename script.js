@@ -3,7 +3,7 @@ function footerCounter() {
     console.log(`Number of times the footer has been clicked : ${footerClicks++}`)
 }
 
-let footerClicks = 1
+let footerClicks = 0
 
 document.querySelector("footer").addEventListener("click", footerCounter)
 
@@ -150,7 +150,7 @@ function alignDefault() {
 }
 
 function changeAlign(e) {
-  switch(e.key) {
+  switch(e.key.toLowerCase()) {
     case "a":
       alignLeft();
       break;
@@ -164,6 +164,24 @@ function changeAlign(e) {
       alignDefault();
       break;
   }
+
+  let footerClicks = 0
+  const hamburgerBtn = document.querySelector("button.navbar-toggler");
+  const editBtn = document.querySelector(".album .container .row div:first-of-type .btn-group button:last-of-type");
+  const editCSSBtn = document.querySelector(".album .container .row div:nth-of-type(2) .btn-group button:last-of-type");
+  const navbar = document.querySelector("header")
+  const viewBtns = document.querySelectorAll(".album .container .row div .btn-group button:first-of-type")
+  const arrowLeft = document.querySelector("main section.jumbotron a:first-of-type")
+  const arrowRight = document.querySelector("main section.jumbotron a:last-of-type")
+
+  document.querySelector("footer").addEventListener("click", footerCounter);
+  hamburgerBtn.addEventListener("click", toggleCollapse);
+  editBtn.addEventListener("click", toRed);
+  editCSSBtn.addEventListener("click", toggleGreen);
+  navbar.addEventListener("dblclick", toggleBootstrap);
+  viewBtns.forEach(card => card.addEventListener("mouseover", toggleCard));
+  arrowRight.addEventListener("click", forwardCard);
+  arrowLeft.addEventListener("click", backwardCard);
 }
 
 logo.addEventListener("click", (e) => {
