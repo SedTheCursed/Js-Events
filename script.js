@@ -23,9 +23,9 @@ hamburgerBtn.addEventListener("click", toggleCollapse)
 // ******* F 3 ********
 const editBtn = document.querySelector(".album .container .row div:first-of-type .btn-group button:last-of-type");
 
-function toRed(){
-	const text = document.querySelector(".album .container .row div:first-of-type p.card-text");
-
+function toRed(e){
+  const text = e.target.parentNode.parentNode.parentNode.querySelector(".card-text");
+  
 	text.style.color = 'red';
 }
 
@@ -34,8 +34,8 @@ editBtn.addEventListener("click", toRed)
 // ******* F 4 ********
 const editCSSBtn = document.querySelector(".album .container .row div:nth-of-type(2) .btn-group button:last-of-type");
 
-function toggleGreen() {
-  const text = document.querySelector(".album .container .row div:nth-of-type(2) p.card-text");
+function toggleGreen(e) {
+  const text = e.target.parentNode.parentNode.parentNode.querySelector(".card-text");
 
   text.style.color =  (text.style.color === "green") ? "rgb(33, 37, 41)" : "green";
 }
