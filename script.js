@@ -43,7 +43,7 @@ editBtn.addEventListener("click", toRed)
 // selection du bouton edit de la deuxième card
 const editCSSBtn = document.querySelector(".album .container .row div:nth-of-type(2) .btn-group button:last-of-type");
 
-//foction qui va changer la couleur du texte, soit en vert si le texte etait noir, soit en noir si le texte etait en vert. 
+//fonction qui va changer la couleur du texte, soit en vert si le texte etait noir, soit en noir si le texte etait en vert. 
 function toggleGreen(e) {
   const text = e.target.parentNode.parentNode.parentNode.querySelector(".card-text");
   //partie du code qui vérifie de quelle couleur était le text pour le changer en vert ou noir. 
