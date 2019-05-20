@@ -80,18 +80,25 @@ function toggleCard(e) {
 
 viewBtns.forEach(card => card.addEventListener("mouseover", toggleCard))
 
-// ******* F 7 ********
+// ******* F 7 & 8 ********
+const arrowLeft = document.querySelector("main section.jumbotron a:first-of-type")
 const arrowRight = document.querySelector("main section.jumbotron a:last-of-type")
 
-function switchCard() {
+function forwardCard() {
   const Cards = document.querySelector(".album > .container > .row")
-  console.log(Cards.lastElementChild)
+
   CardToMove = Cards.removeChild(Cards.lastElementChild)
   Cards.prepend(CardToMove)
 }
 
-arrowRight.addEventListener("click", switchCard)
+function backwardCard(e) {
+  const Cards = document.querySelector(".album > .container > .row")
 
-/*Allez on va rajouter un peu de WTF dans la page : si un utilisateur clique sur le bouton gris ==>, la dernière card (en bas à droite) va passer en premier (en haut à gauche). On va pouvoir faire tourner les cards !*/
+  e.preventDefault()
+  CardToMove = Cards.removeChild(Cards.firstElementChild)
+  Cards.appendChild(CardToMove)
+}
 
-/*Petite remarque : tu vas réaliser que si tu mélanges les cards, il est fort probable que la fonctionnalité 6 va se mettre à faire n'importe quoi. Si tu survoles un bouton "View", c'est une autre card qui va se réduire. Si tu arrives à corriger ça, c'est cool mais la consigne est d'ignorer ce souci pour le moment.*/
+arrowRight.addEventListener("click", forwardCard)
+arrowLeft.addEventListener("click", backwardCard)
+
