@@ -102,3 +102,40 @@ function backwardCard(e) {
 arrowRight.addEventListener("click", forwardCard)
 arrowLeft.addEventListener("click", backwardCard)
 
+// ******* F 9 ********
+const logo = document.querySelector("header>.navbar>.container>a>strong")
+
+function alignLeft() {}
+function alignCenter() {}
+function alignRight() {}
+function alignDefault() {}
+
+/* 
+Bon si t'es arrivé jusque-là, c'est que t'as besoin d'un peu de challenge. Du coup je t'ai concocté une fonctionnalité de derrière les fagots, spécialement conçue pour les moussaillons pas piqués des hannetons (this sentence is brought to you by www.vieilles-expressions.fr). Voici ce qu'elle va devoir faire :
+
+    La fonctionnalité se déclenchera si le logo de la page (JS & Events) est sélectionné et qu'on appuie sur une touche spécifique du clavier.
+    Si l'utilisateur presse la touche "a", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à gauche de l'écran.
+    Si l'utilisateur presse la touche "y", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap au milieu de l'écran.
+    Si l'utilisateur presse la touche "p", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à droite de l'écran.
+    Si l'utilisateur presse la touche "b", tout redevient normal.
+
+*/
+
+function changeAlign(e) {
+  switch(e.key) {
+    case "a":
+      alignLeft();
+      break;
+    case "y":
+      alignCenter();
+      break;
+    case "p":
+      alignRight();
+      break;
+    case "b":
+      alignDefault();
+      break;
+  }
+}
+
+logo.addEventListener("click", () => document.addEventListener("keypress", changeAlign))
