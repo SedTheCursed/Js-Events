@@ -30,3 +30,25 @@ function toRed(){
 }
 
 editBtn.addEventListener("click", toRed)
+
+// ******* F 4 ********
+const editCSSBtn = document.querySelector(".album .container .row div:nth-of-type(2) .btn-group button:last-of-type");
+
+function toggleGreen() {
+  const text = document.querySelector(".album .container .row div:nth-of-type(2) p.card-text");
+
+  text.style.color =  (text.style.color === "green") ? "rgb(33, 37, 41)" : "green";
+}
+
+editCSSBtn.addEventListener("click", toggleGreen);
+
+// ******* F 5 ********
+const navbar = document.querySelector("header")
+
+function toggleBootstrap() {
+  const boostrapLink = document.head.querySelector("link")
+
+  boostrapLink.disabled = (boostrapLink.disabled) ? false : true
+}
+
+navbar.addEventListener("dblclick", toggleBootstrap)
