@@ -105,25 +105,32 @@ arrowLeft.addEventListener("click", backwardCard)
 // ******* F 9 ********
 const logo = document.querySelector("header>.navbar>.container>a>strong")
 
-function align(alignment){
+function align(alignment, reset=false){
   const body = document.body
-  const bodyContent = body.innerHTML
-  let col = body.querySelector(".container-fluid >.row > div")
+  const bodyContent =
+  (body.querySelector(".container-fluid > .row > .col-sm-4")) ?
+    body.querySelector(".container-fluid > .row > .col-sm-4").innerHTML :
+    body.innerHTML
 
-  if (!col){
-  	body.classList.add("container-fluid");
+  body.innerHTML = ""
 
-  	const row = document.createElement("div");
-  	col = document.createElement("div");
+  if (!reset) {
+    body.classList.add("container-fluid");
 
-  	row.classList.add("row");
-  	col.innerHTML = bodyContent;
-    
+    const row = document.createElement("div");
+    const col = document.createElement("div");
+
+    row.classList.add("row");
+    col.innerHTML = bodyContent;
+
+    alignment.split(" ").forEach(className => col.classList.add(className))
+
     row.appendChild(col);
-  	body.appendChild(row);
-  } 
-  col.classList = " "
-  col.classList.add(alignment)
+    body.appendChild(row);
+  } else {
+    body.classList.remove("container-fluid");
+    body.innerHTML = bodyContent
+  }
 }
 
 function alignLeft() {
@@ -131,27 +138,16 @@ function alignLeft() {
 }
 
 function alignCenter() {
-  
+  align("col-sm-4 offset-sm-4")
 }
 
 function alignRight() {
-  
+  align("col-sm-4 offset-sm-8")
 }
 
 function alignDefault() {
-
+  align("", true)
 }
-
-/* 
-Bon si t'es arrivé jusque-là, c'est que t'as besoin d'un peu de challenge. Du coup je t'ai concocté une fonctionnalité de derrière les fagots, spécialement conçue pour les moussaillons pas piqués des hannetons (this sentence is brought to you by www.vieilles-expressions.fr). Voici ce qu'elle va devoir faire :
-
-    La fonctionnalité se déclenchera si le logo de la page (JS & Events) est sélectionné et qu'on appuie sur une touche spécifique du clavier.
-    Si l'utilisateur presse la touche "a", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à gauche de l'écran.
-    Si l'utilisateur presse la touche "y", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap au milieu de l'écran.
-    Si l'utilisateur presse la touche "p", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à droite de l'écran.
-    Si l'utilisateur presse la touche "b", tout redevient normal.
-
-*/
 
 function changeAlign(e) {
   switch(e.key) {
@@ -170,4 +166,7 @@ function changeAlign(e) {
   }
 }
 
-logo.addEventListener("click", () => document.addEventListener("keypress", changeAlign))
+logo.addEventListener("click", (e) => {
+  e.preventDefault();
+  document.addEventListener("keypress", changeAlign)
+});
