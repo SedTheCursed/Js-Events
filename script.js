@@ -105,10 +105,42 @@ arrowLeft.addEventListener("click", backwardCard)
 // ******* F 9 ********
 const logo = document.querySelector("header>.navbar>.container>a>strong")
 
-function alignLeft() {}
-function alignCenter() {}
-function alignRight() {}
-function alignDefault() {}
+function align(alignment){
+  const body = document.body
+  const bodyContent = body.innerHTML
+  let col = body.querySelector(".container-fluid >.row > div")
+
+  if (!col){
+  	body.classList.add("container-fluid");
+
+  	const row = document.createElement("div");
+  	col = document.createElement("div");
+
+  	row.classList.add("row");
+  	col.innerHTML = bodyContent;
+    
+    row.appendChild(col);
+  	body.appendChild(row);
+  } 
+  col.classList = " "
+  col.classList.add(alignment)
+}
+
+function alignLeft() {
+  align("col-sm-4")
+}
+
+function alignCenter() {
+  
+}
+
+function alignRight() {
+  
+}
+
+function alignDefault() {
+
+}
 
 /* 
 Bon si t'es arrivé jusque-là, c'est que t'as besoin d'un peu de challenge. Du coup je t'ai concocté une fonctionnalité de derrière les fagots, spécialement conçue pour les moussaillons pas piqués des hannetons (this sentence is brought to you by www.vieilles-expressions.fr). Voici ce qu'elle va devoir faire :
