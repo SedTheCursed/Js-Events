@@ -52,3 +52,34 @@ function toggleBootstrap() {
 }
 
 navbar.addEventListener("dblclick", toggleBootstrap)
+
+// ******* F 6 ********
+const viewBtns = document.querySelectorAll(".album .container .row div .btn-group button:first-of-type")
+
+function reduceCard(elt) {
+  elt.querySelector(".card-text").style.display = "none"
+  elt.querySelector("img").style.width = "20%"
+  elt.classList.add("reduced")
+}
+
+function expendCard(elt) {
+  elt.querySelector(".card-text").style = ""
+  elt.querySelector("img").style = ""
+  elt.classList.remove("reduced")
+}
+
+function toggleCard(e) {
+  const card = e.target.parentNode.parentNode.parentNode.parentNode
+
+  if (card.classList.contains("reduced")) {
+    expendCard(card)
+  } else {
+    reduceCard(card)
+  } 
+}
+
+viewBtns.forEach(card => card.addEventListener("mouseover", toggleCard))
+
+/*
+La fonctionnalité sera la suivante : si un utilisateur passe sa souris sur le bouton "View" d'une card (n'importe laquelle), celle-ci va se réduire. Cela veut dire que le texte disparaît, l'image n'apparaîtra qu'à 20 % de sa taille d'origine et les boutons "Edit" / "View" restent visibles. Cette fonction sera réversible : s'il repasse sa souris, la card redevient normale !
+*/
