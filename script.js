@@ -18,3 +18,15 @@ function toggleCollapse() {
 }
 
 hamburgerBtn.addEventListener("click", toggleCollapse)
+
+
+// ******* F 3 ********
+const editBtn = document.querySelector(".album .container .row div:first-of-type .btn-group button:last-of-type");
+
+function toRed(){
+	const text = document.querySelector(".album .container .row div:first-of-type p.card-text");
+
+	text.style.color = 'red';
+}
+
+editBtn.addEventListener("click", toRed)
